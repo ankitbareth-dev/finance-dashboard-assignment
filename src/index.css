@@ -1,1 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --surface: #fcfbf8;
+  --panel: #ffffff;
+  --panel-muted: #f5f1ea;
+  --panel-elevated: #fffcf8;
+  --on-surface: #141414;
+  --on-surface-variant: #5f6874;
+  --on-surface-muted: #95a0ae;
+  --muted-accent: #89a0c1;
+  --primary: #0e7c63;
+  --primary-soft: rgba(14, 124, 99, 0.1);
+  --income: #0e7c63;
+  --income-soft: rgba(14, 124, 99, 0.12);
+  --expense: #d21f1f;
+  --expense-soft: rgba(210, 31, 31, 0.12);
+  --ghost-border: rgba(20, 20, 20, 0.09);
+  --track: #ece8e1;
+  --trend-fill: #cfe4de;
+  --chart-1: #7b61ff;
+  --chart-2: #3f7ae0;
+  --chart-3: #d84a77;
+  --chart-4: #0b7c64;
+  --budget-1: #0b7c64;
+  --budget-2: #c79c1b;
+  --budget-3: #bf1f1f;
+  --accent-violet: #7b61ff;
+  --accent-violet-bg: #f1ebff;
+  --accent-mint: #0e7c63;
+  --accent-mint-bg: #e7f5f0;
+  --accent-rose: #cf3f67;
+  --accent-rose-bg: #fdecef;
+  --shadow-panel: 0 16px 40px rgba(15, 23, 42, 0.05);
+}
+
+.dark {
+  --surface: #11111a;
+  --panel: #1a1b26;
+  --panel-muted: #232434;
+  --panel-elevated: #171823;
+  --on-surface: #f5f6fb;
+  --on-surface-variant: #a5b0c3;
+  --on-surface-muted: #667188;
+  --muted-accent: #7b88a7;
+  --primary: #119b7b;
+  --primary-soft: rgba(17, 155, 123, 0.14);
+  --income: #119b7b;
+  --income-soft: rgba(17, 155, 123, 0.12);
+  --expense: #ff7a7a;
+  --expense-soft: rgba(255, 122, 122, 0.12);
+  --ghost-border: rgba(255, 255, 255, 0.08);
+  --track: #253049;
+  --trend-fill: rgba(17, 155, 123, 0.18);
+  --chart-1: #8a68ef;
+  --chart-2: #4a86e8;
+  --chart-3: #d9527c;
+  --chart-4: #169b7a;
+  --budget-1: #169b7a;
+  --budget-2: #f6aa1c;
+  --budget-3: #ff3131;
+  --accent-violet: #8a68ef;
+  --accent-violet-bg: rgba(138, 104, 239, 0.12);
+  --accent-mint: #119b7b;
+  --accent-mint-bg: rgba(17, 155, 123, 0.12);
+  --accent-rose: #d9527c;
+  --accent-rose-bg: rgba(217, 82, 124, 0.12);
+  --shadow-panel: 0 20px 45px rgba(0, 0, 0, 0.28);
+}
+
+@theme {
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-panel-muted: var(--panel-muted);
+  --color-panel-elevated: var(--panel-elevated);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-on-surface-muted: var(--on-surface-muted);
+  --color-muted-accent: var(--muted-accent);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-income: var(--income);
+  --color-income-soft: var(--income-soft);
+  --color-expense: var(--expense);
+  --color-expense-soft: var(--expense-soft);
+  --color-ghost-border: var(--ghost-border);
+  --color-track: var(--track);
+  --shadow-panel: var(--shadow-panel);
+}
+
+html {
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(14, 124, 99, 0.06),
+      transparent 30%
+    ),
+    var(--surface);
+  color: var(--on-surface);
+}
+
+.dark body {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(17, 155, 123, 0.14),
+      transparent 28%
+    ),
+    var(--surface);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
