@@ -1,5 +1,7 @@
+import Sidebar from "./components/Sidebar";
+
 function App() {
-  return <div className="bg-emerald-400">Hello</div>;
+  return <Sidebar />;
 }
 
 export default App;
