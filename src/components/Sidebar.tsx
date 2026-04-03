@@ -19,7 +19,7 @@ function Sidebar() {
 
   return (
     <aside className="flex flex-col h-full w-full bg-panel border-r border-ghost-border">
-      <div className="h-16 flex items-center px-6 border-b border-ghost-border/50">
+      <div className="h-16 flex items-center px-6 border-b border-ghost-border">
         <div className="flex items-center gap-2 text-primary font-bold text-xl">
           <div className="bg-primary text-white p-1 rounded-md">
             <LayoutDashboard size={20} />
