@@ -29,13 +29,19 @@ function Sidebar() {
         ${isCollapsed ? "w-20" : "w-70"}
       `}
     >
-      <button
-        onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute top-1/2 -translate-y-1/2 -right-3 bg-panel border border-ghost-border rounded-full p-1 text-on-surface-variant hover:text-primary hover:shadow-md transition-all z-50"
-        aria-label="Toggle Sidebar"
-      >
-        {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
-      </button>
+      <div className="absolute top-1/2 -translate-y-1/2 -right-3 z-50">
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="relative group bg-panel border border-ghost-border rounded-full p-1 text-on-surface-variant hover:text-primary hover:shadow-md transition-all"
+          aria-label="Toggle Sidebar"
+        >
+          {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
+
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-on-surface text-panel text-xs font-medium rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-sm">
+            {isCollapsed ? "Expand" : "Collapse"}
+          </span>
+        </button>
+      </div>
 
       <div className="h-16 flex items-center px-6 border-b border-ghost-border/50 shrink-0">
         <div className="flex items-center gap-2 text-primary font-bold text-xl">
@@ -69,7 +75,7 @@ function Sidebar() {
                     : "text-on-surface-variant hover:bg-panel-muted hover:text-on-surface"
                 }
               `}
-              title={isCollapsed ? item.label : ""}
+              title={isCollapsed ? item.label : ""} // Native tooltip for menu items
             >
               <Icon size={20} className={isActive ? "text-primary" : ""} />
 
