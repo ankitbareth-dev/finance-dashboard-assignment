@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   LayoutDashboard,
   Wallet,
@@ -9,16 +9,21 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { useState } from "react";
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const activeItem = "dashboard";
 
   const menuItems = [
-    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { id: "transactions", label: "Transactions", icon: CreditCard },
-    { id: "insights", label: "Insights", icon: PieChart },
-    { id: "budgets", label: "Budgets", icon: Wallet },
+    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, to: "/" },
+    {
+      id: "transactions",
+      label: "Transactions",
+      icon: CreditCard,
+      to: "/transactions",
+    },
+    { id: "insights", label: "Insights", icon: PieChart, to: "/insights" },
+    { id: "budgets", label: "Budgets", icon: Wallet, to: "/budgets" },
   ];
 
   return (
@@ -36,7 +41,6 @@ function Sidebar() {
           aria-label="Toggle Sidebar"
         >
           {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
-
           <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-on-surface text-panel text-xs font-medium rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-sm">
             {isCollapsed ? "Expand" : "Collapse"}
           </span>
@@ -58,29 +62,32 @@ function Sidebar() {
 
       <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
         {menuItems.map((item) => {
-          const isActive = activeItem === item.id;
           const Icon = item.icon;
 
           return (
-            <a
+            <NavLink
               key={item.id}
-              href="#"
-              className={`
-                flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200
-                ${isCollapsed ? "justify-center" : "justify-start"}
-                ${
-                  isActive
-                    ? "bg-primary-soft text-primary"
-                    : "text-on-surface-variant hover:bg-panel-muted hover:text-on-surface"
-                }
-              `}
+              to={item.to}
+              className={({ isActive }) => `
+    flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200
+    ${isCollapsed ? "justify-center" : "justify-start"}
+    ${
+      isActive
+        ? "bg-primary-soft text-primary"
+        : "text-on-surface-variant hover:bg-panel-muted hover:text-on-surface"
+    }
+  `}
               title={isCollapsed ? item.label : ""}
             >
-              <Icon size={20} className={isActive ? "text-primary" : ""} />
-              {!isCollapsed && (
-                <span className="whitespace-nowrap">{item.label}</span>
+              {({ isActive }: { isActive: boolean }) => (
+                <>
+                  <Icon size={20} className={isActive ? "text-primary" : ""} />
+                  {!isCollapsed && (
+                    <span className="whitespace-nowrap">{item.label}</span>
+                  )}
+                </>
               )}
-            </a>
+            </NavLink>
           );
         })}
       </nav>
