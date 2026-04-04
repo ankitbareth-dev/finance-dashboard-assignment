@@ -24,7 +24,7 @@ function Sidebar() {
   return (
     <aside
       className={`
-        relative flex flex-col h-full bg-panel border-r border-ghost-border 
+        relative hidden md:flex flex-col h-full bg-panel border-r border-ghost-border 
         transition-all duration-300 ease-in-out overflow-hidden
         ${isCollapsed ? "w-20" : "w-70"}
       `}
@@ -48,7 +48,6 @@ function Sidebar() {
           <div className="bg-primary text-white p-1 rounded-md shrink-0">
             <LayoutDashboard size={20} />
           </div>
-
           {!isCollapsed && (
             <span className="text-on-surface whitespace-nowrap opacity-100 transition-opacity duration-200">
               FinDash
@@ -75,10 +74,9 @@ function Sidebar() {
                     : "text-on-surface-variant hover:bg-panel-muted hover:text-on-surface"
                 }
               `}
-              title={isCollapsed ? item.label : ""} // Native tooltip for menu items
+              title={isCollapsed ? item.label : ""}
             >
               <Icon size={20} className={isActive ? "text-primary" : ""} />
-
               {!isCollapsed && (
                 <span className="whitespace-nowrap">{item.label}</span>
               )}
